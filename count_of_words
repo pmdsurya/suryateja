@@ -1,0 +1,36 @@
+# user input receving
+user_inpt="is my name is that what your require or others name"
+
+#dividing sentence into words and storing into an array.
+arr=@user_inpt.split(' ')
+
+final_arr=[]
+final_arr[0]=arr[0]
+final_arr_count=[]
+final_arr_count[0]=1
+
+#creating a loop
+for var_itn 1...(arr.length)
+	arr.each do |var_int|
+#checking wether element is already present or not if present find the index and increment the number by one.
+	if arr[var_itn]==arr[var_itn-1]
+		for sec_itn 0...(final_arr.length)
+			final_arr.each do |sec_itn|
+			if final_arr[sec_itn]=arr[sec_itn]
+				final_arr_count[sec_itn]=final_arr_count[sec_itn]+1	
+			end
+		end
+	end
+
+		
+#if element is not present in temporory array [final_arr] insert the element and give its count as one in count array.
+	elsif
+		final_arr[final_arr.length+1]=arr[var_itn]
+		final_arr_count[final_arr.length+1]=1
+end
+
+#print the elements and its count number
+for v_itrn 0..final_arr.length
+	final_arr.each do |v_itrn|
+	puts (final_arr[v_itrn] "=>" final_arr_count[v_itrn])
+end
