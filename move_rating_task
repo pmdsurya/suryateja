@@ -45,8 +45,11 @@ case urs_inpt
         puts("enter movie rating for #{add_mov}:")
         add_rating=gets.chomp
         mv_list.store(add_mov,add_rating)
-        mv_list.each do |keys,values|
-   
-        puts("your entered movie name is:#{keys} and its rating is: #{values} ")
-    end
+    else
+        puts ("you choose a wrong option try again.")
 end
+puts ("--------list of movies and its rating-------")
+mv_list.each do |keys,values|
+   
+        puts("movie name is:#{keys} and its rating is: #{values} ")
+    end
