@@ -1,0 +1,52 @@
+puts ("enter movie name:")
+
+mv_list=Hash.new
+mv_list={"krish"=> 5, "I robot" => 5}
+temp_key=gets.chomp
+
+if(mv_list.has_key?(temp_key))
+    puts ("movie already exists.")
+    
+else
+    puts ("enter rating:")
+    temp_value=gets.chomp
+
+    mv_list.store(temp_key,temp_value)
+    
+    mv_list.each do |keys,values|
+   
+        puts("your entered movie name is:#{keys} and its rating is: #{values} ")
+
+        end
+end
+
+puts ("enter 'u' to update movie rating, enter 'd' to delete, enter 's' to show all movies and its ratings and 'a' to add another movie and its rating:")
+urs_inpt=gets.chomp
+case urs_inpt
+    when 'u'
+        puts ("enter movie name which you want to change rating:")
+        exist_mov=gets.chomp
+        puts ("enter your new rating:")
+        new_rating=gets.chomp
+        mv_list[exist_mov]=new_rating
+    when 'd'
+        puts("enter movie name which you want to delete:")
+        exist_mov1=gets.chomp
+        mv_list.delete(exist_mov1)
+        puts("#{exist_mov1} is deleted from movie list.")
+    when 's'
+        puts("enter movie name which you want to see its rating:")
+        exist_mov2=gets.chomp
+        rating=mv_list.values_at(exist_mov2)
+        puts ("rating for #{exist_mov2} is: #{rating}")
+    when 'a'
+        puts("enter movie name which you want to add:")
+        add_mov=gets.chomp
+        puts("enter movie rating for #{add_mov}:")
+        add_rating=gets.chomp
+        mv_list.store(add_mov,add_rating)
+        mv_list.each do |keys,values|
+   
+        puts("your entered movie name is:#{keys} and its rating is: #{values} ")
+    end
+end
