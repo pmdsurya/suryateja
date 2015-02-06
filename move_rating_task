@@ -8,16 +8,20 @@ if(mv_list.has_key?(temp_key))
     puts ("movie already exists.")
     
 else
-    puts ("enter rating:")
+    puts ("enter rating between 1 to 5:")
     temp_value=gets.chomp
-
-    mv_list.store(temp_key,temp_value)
+    if (temp_value =~ /\A[-+]?[1-5]+\z/)
+        mv_list.store(temp_key,temp_value)
     
-    mv_list.each do |keys,values|
+        mv_list.each do |keys,values|
    
-        puts("your entered movie name is:#{keys} and its rating is: #{values} ")
+         puts("your entered movie name is:#{keys} and its rating is: #{values} ")
 
         end
+    else
+        puts ("enter valid rating.")
+        
+    end
 end
 
 puts ("enter 'u' to update movie rating, enter 'd' to delete, enter 's' to show all movies and its ratings and 'a' to add another movie and its rating:")
@@ -26,9 +30,13 @@ case urs_inpt
     when 'u'
         puts ("enter movie name which you want to change rating:")
         exist_mov=gets.chomp
-        puts ("enter your new rating:")
+        puts ("enter your new rating between 1 to 5:")
         new_rating=gets.chomp
-        mv_list[exist_mov]=new_rating
+        if (new_rating =~ /\A[-+]?[1-5]+\z/)
+            mv_list[exist_mov]=new_rating
+        else
+            puts ("enter valid rating.")
+        end
     when 'd'
         puts("enter movie name which you want to delete:")
         exist_mov1=gets.chomp
@@ -42,9 +50,14 @@ case urs_inpt
     when 'a'
         puts("enter movie name which you want to add:")
         add_mov=gets.chomp
-        puts("enter movie rating for #{add_mov}:")
+        puts("enter movie rating for #{add_mov} between 1 to 5:")
         add_rating=gets.chomp
-        mv_list.store(add_mov,add_rating)
+        if (add_rating =~ /\A[-+]?[1-5]+\z/)
+            mv_list.store(add_mov,add_rating)
+        else
+            puts ("enter valid rating.")
+        end
+        
     else
         puts ("you choose a wrong option try again.")
 end
